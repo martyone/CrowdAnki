@@ -167,6 +167,6 @@ class AnkiJsonExporterWrapperNew(Exporter):
 def exporters_hook_new(exporters_list):
     """Exporter hook for Anki 2.1.55+."""
     if not AnkiJsonExporterWrapperNew in exporters_list:
-        exporters_list.append(AnkiJsonExporterWrapperNew)
+        exporters_list.insert(0, AnkiJsonExporterWrapperNew)
 
 
