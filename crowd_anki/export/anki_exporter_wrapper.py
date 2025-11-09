@@ -118,4 +118,4 @@ class AnkiJsonExporterWrapper(Exporter):
 def exporters_hook(exporters_list):
     """Exporter hook for exporters_list_did_initialize."""
     if not AnkiJsonExporterWrapper in exporters_list:
-        exporters_list.append(AnkiJsonExporterWrapper)
+        exporters_list.append(0, AnkiJsonExporterWrapper)
