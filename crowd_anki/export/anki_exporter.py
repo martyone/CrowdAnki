@@ -40,6 +40,16 @@ class AnkiJsonExporter(DeckExporter):
 
         self.last_exported_count = deck.get_note_count()
 
+        # I guess the effect of this is persistent for the rest of the
+        # application runtime, not just for a single export invocation, so
+        # controlling this by a configuration option from the export dialog
+        # would be kind of hacky.
+        if True: #not include_deck_config:
+            deck.__class__.export_filter_set |= {
+                "deck_config_uuid",
+                "deck_configurations",
+            }
+
         deck_filename = deck_directory.joinpath(self.deck_file_name).with_suffix(DECK_FILE_EXTENSION)
         with deck_filename.open(mode='w', encoding="utf8") as deck_file:
             deck_file.write(json.dumps(deck,
